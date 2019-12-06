@@ -11,10 +11,10 @@ class App extends React.Component {
   componentDidMount(){
     axios.get('http://localhost:5000/api/players')
     .then(res => { 
-      console.log(res.data);
+      // console.log(res.data);
       let data1 = res.data;
       for(let i in data1){
-        console.log(data1[i])
+        // console.log(data1[i])
         let data = data1[i]
         this.setState({players : [...this.state.players, {id: data.id, name: data.name, country: data.country, searches: data.searches}]})
       }
