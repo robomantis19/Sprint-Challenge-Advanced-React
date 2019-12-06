@@ -1,14 +1,20 @@
-import React from 'react'; 
-import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from 'constants';
+import React, {useState} from 'react'; 
 
 const DisplayPlayers = (props) => { 
-
+    const [search, setSearch] = useState(""); 
+    function handleChange(e){ 
+        setSearch(e.target.value);
+    }
 
     return (
         <div>
 
             <h1>Womens World Cup!</h1>
-            {props.players.length > 0 ? props.players.map(item => (
+            <input type = 'text' placeholder="Search..." onChange={handleChange}/>
+            {props.players.length != 0 ? 
+            props.players.filter(player => search !== '' ?
+            player.name.toLowerCase().includes(search.toLowerCase()) : true)
+              .map(item => (
             
             <div key={item.id} style={{border: `2px dashed black`}}>
                <h2>{item.name}</h2> 
